@@ -8,12 +8,10 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   return Promise.allSettled([userPromise, photoPromise])
     .then((results) => {
       results.forEach((item) => {
-        const itemMod = item;
         if (item.status === 'rejected') {
-          itemMod.value = `Error: ${item.reason.message}`;
-          delete itemMod.reason;
+          item.value = `Error: ${item.reason.message}`;
+          delete item.reason;
         }
-        return (itemMod);
        });
        return results
     });
