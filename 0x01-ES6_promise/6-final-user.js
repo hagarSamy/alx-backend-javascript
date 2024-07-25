@@ -6,5 +6,15 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   const photoPromise = uploadPhoto(fileName);
 
   return Promise.allSettled([userPromise, photoPromise])
-    .then(() => console.log());
+    .then((results) => {
+      results.forEach((item) => {
+        const itemMod = item;
+        if (item.status === 'rejected') {
+          itemMod.value = `Error: ${item.reason.message}`;
+          delete itemMod.reason;
+        }
+        return (itemMod);
+       });
+       return results
+    });
 }
