@@ -7,7 +7,8 @@ const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.write('Hello Holberton School!');
     res.end('');
-  } else if (req.url === '/students') {
+  }
+  if (req.url === '/students') {
     res.write('This is the list of our students\n');
     try {
       const result = countStudents(process.argv[2]);
