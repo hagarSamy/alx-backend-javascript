@@ -23,11 +23,12 @@ describe('calculateNumber' , function(){
         let result = calculateNumber(0, 0);
         assert.strictEqual(result, 0);
     });
-    it('should return -6 for -1.5, -3.7 inputs', function(){
+    it('should return -5 for -1.5, -3.7 inputs', function(){
         let result = calculateNumber(-1.5, -3.7);
-        assert.strictEqual(result, -6);
+        assert.strictEqual(result, -5);
     });
     it('should return -5 for -1.2, -3.7 inputs', function(){
         let result = calculateNumber(-1.2, -3.7);
         assert.strictEqual(result, -5);
+    });
 });
