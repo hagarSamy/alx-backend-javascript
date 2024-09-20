@@ -7,7 +7,7 @@ describe('calculateNumber' , function(){
     describe('SUM', function(){
         it('should return 4 for SUM, 1, 3 inputs', function(){
             let result = calculateNumber('SUM', 1, 3);
-            expect(result).to.equal('4');
+            expect(result).to.be(4);
         });
         it('should return 5 for SUM, 1, 3.7 inputs', function(){
             let result = calculateNumber('SUM', 1, 3.7);
