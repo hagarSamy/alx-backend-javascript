@@ -2,6 +2,7 @@ const sendPaymentRequestToApi = require('./3-payment.js')
 const sinon = require('sinon')
 const chai = require('chai');
 const expect = chai.expect;
+const Utils = require('./utils.js')
 
 
 describe('spy sendPaymentRequestToApi' , function(){
