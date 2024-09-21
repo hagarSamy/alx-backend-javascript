@@ -6,8 +6,7 @@ function countStudents(path) {
     .then((data) => {
       const lines = data.split('\n').filter((line) => line.trim() !== '');
       if (lines.length <= 1) {
-        console.log('Number of students: 0');
-        return;
+        return 'Number of students: 0';
       }
       const students = lines.slice(1).map((line) => line.split(','));
       let output = `Number of students: ${students.length}\n`;
@@ -43,18 +42,16 @@ const app = http.createServer(async (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   if (req.url === '/') {
-    res.write('Hello Holberton School!');
-    res.end('');
+    res.end('Hello Holberton School!');
   }
   if (req.url === '/students') {
     res.write('This is the list of our students\n');
     try {
       const result = await countStudents(process.argv[2]);
-      res.write(result);
+      res.end(result);
     } catch (error) {
-      res.write('Cannot load the database\n');
+      res.end('Cannot load the database\n');
     }
-    res.end();
   }
 });
 
