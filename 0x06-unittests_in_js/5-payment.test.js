@@ -5,9 +5,9 @@ const sendPaymentRequestToApi = require('./5-payment');
 
 describe('hhoking sendPaymentRequestToApi', function(){
   beforeEach(function() {
+    const expect = chai.expect;
     consoleLogSpy = sinon.spy(console, 'log');
   });
-  const expect = chai.expect;
   it('should log "The total is: 120" when called with 100 and 20', function() {
     sendPaymentRequestToApi(100, 20);
     expect(consoleLogSpy.calledOnceWithExactly('The total is: 120')).to.be.true;
