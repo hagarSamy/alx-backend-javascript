@@ -8,9 +8,8 @@ describe('getPaymentTokenFromAPI', function(){
       return new Promise ((done) => {
         getPaymentTokenFromAPI(true)
         .then(response => {
-        expect(response).to.equal({ data:
+        expect(response).to.deep.equal({ data:
             'Successful response from the API' });
-        done();
       });
       })
     });
