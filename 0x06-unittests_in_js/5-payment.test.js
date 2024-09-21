@@ -1,11 +1,11 @@
 const sinon = require('sinon');
 const chai = require('chai');
+const expect = chai.expect;
 const sendPaymentRequestToApi = require('./5-payment');
 
 
 describe('hhoking sendPaymentRequestToApi', function(){
   beforeEach(function() {
-    const expect = chai.expect;
     consoleLogSpy = sinon.spy(console, 'log');
   });
   it('should log "The total is: 120" when called with 100 and 20', function() {
