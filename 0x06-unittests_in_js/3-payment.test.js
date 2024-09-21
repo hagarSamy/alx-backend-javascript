@@ -1,6 +1,6 @@
 const sendPaymentRequestToApi = require('./3-payment.js')
-const { spy } = require('sinon');
-const { expect } = require('chai');
+import sinon from 'sinon';
+import { expect } from 'chai';
 const Utils = require('./utils.js')
 
 
