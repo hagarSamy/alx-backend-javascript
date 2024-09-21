@@ -1,7 +1,44 @@
 const http = require('http');
-const countStudents = require('./3-read_file_async');
+const fs = require('fs').promises;
 
-const app = http.createServer((req, res) => {
+function countStudents(path) {
+  return fs.readFile(path, 'utf8')
+    .then((data) => {
+      const lines = data.split('\n').filter((line) => line.trim() !== '');
+      if (lines.length <= 1) {
+        console.log('Number of students: 0');
+        return;
+      }
+      const students = lines.slice(1).map((line) => line.split(','));
+      let output = `Number of students: ${students.length}`;
+
+      const fields = {};
+
+      students.forEach((student) => {
+        const field = student[3];
+        const firstName = student[0];
+
+        if (!fields[field]) {
+          fields[field] = [];
+        }
+        fields[field].push(firstName);
+      });
+
+      for (const field in fields) {
+        if (field) {
+          const count = fields[field].length;
+          const names = fields[field].join(', ');
+          output += `Number of students in ${field}: ${count}. List: ${names}`;
+        }
+      }
+      return output;
+    })
+    .catch(() => {
+      throw new Error('Cannot load the database');
+    });
+}
+
+const app = http.createServer(async (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   if (req.url === '/') {
@@ -11,10 +48,10 @@ const app = http.createServer((req, res) => {
   if (req.url === '/students') {
     res.write('This is the list of our students\n');
     try {
-      const result = countStudents(process.argv[2]);
+      const result = await countStudents(process.argv[2]);
       res.write(result);
     } catch (error) {
-      res.write('Cannot load the database');
+      res.write('Cannot load the database\n');
     }
     res.end();
   }
