@@ -10,7 +10,7 @@ function countStudents(path) {
         return;
       }
       const students = lines.slice(1).map((line) => line.split(','));
-      let output = `Number of students: ${students.length}`;
+      let output = `Number of students: ${students.length}\n`;
 
       const fields = {};
 
@@ -37,6 +37,7 @@ function countStudents(path) {
       throw new Error('Cannot load the database');
     });
 }
+
 
 const app = http.createServer(async (req, res) => {
   res.statusCode = 200;
