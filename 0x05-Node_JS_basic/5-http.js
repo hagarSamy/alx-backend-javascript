@@ -37,7 +37,6 @@ function countStudents(path) {
     });
 }
 
-
 const app = http.createServer(async (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
