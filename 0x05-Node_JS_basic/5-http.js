@@ -27,7 +27,7 @@ function countStudents(path) {
         if (field) {
           const count = fields[field].length;
           const names = fields[field].join(', ');
-          output += `Number of students in ${field}: ${count}. List: ${names}`;
+          output += `Number of students in ${field}: ${count}. List: ${names}\n`;
         }
       }
       return output;
