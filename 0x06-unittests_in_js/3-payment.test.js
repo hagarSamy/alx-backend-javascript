@@ -1,7 +1,7 @@
-import sendPaymentRequestToApi from './3-payment.js';
-import sinon from 'sinon';
+const sendPaymentRequestToApi = require('./3-payment.js')
+const sinon = require('sinon')
 import { expect } from 'chai';
-import Utils from './utils.js';
+const Utils = require('./utils.js')
 
 
 describe('spy sendPaymentRequestToApi' , function(){
